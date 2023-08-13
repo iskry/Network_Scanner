@@ -3,7 +3,8 @@
 import scapy.all as scapy
 
 def scan(ip):
-    scapy.arping(ip)
+    arp_request = scapy.ARP()
+    print(arp_request.summary())
 
 
 scan("192.168.122.1/24")
