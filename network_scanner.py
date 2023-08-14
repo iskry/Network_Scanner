@@ -10,9 +10,13 @@ def scan(ip):
     # allows us to send packets with a custom Ether part
     # will return two values (answered and unanswered) which is being assigned to variables
     # added timeout to prevent functioning hanging
-    answered_list, unanswered_list = scapy.srp(arp_request_broadcast, timeout=1)
-    
-    print(answered_list.summary())
+    answered_list = scapy.srp(arp_request_broadcast, timeout=1, verbose=False)[0]
+   
+    print("IP\t\t\tMac\n----------------------------------------------")
+    for element in answered_list:
+        print(element[1].psrc + "\t\t" + element[1].hwsrc) 
+
+
 
 scan("192.168.122.1/24")
 
