@@ -12,16 +12,20 @@ def scan(ip):
     # added timeout to prevent functioning hanging
     answered_list = scapy.srp(arp_request_broadcast, timeout=1, verbose=False)[0]
    
-    print("IP\t\t\tMac\n----------------------------------------------")
+
     clients_list = []
     for element in answered_list:
         client_dict = {"ip": element[1].psrc, "mac": element[1].hwsrc}
         clients_list.append(client_dict)
-        print(element[1].psrc + "\t\t" + element[1].hwsrc)
-    print(clients_list)
+    return clients_list
+
+def print_result(results_list):
+    print("IP\t\t\tMac\n----------------------------------------------")
+    for client in results_list:
+        print(client)
 
 
-
-scan("192.168.122.1/24")
+scan_result = scan("192.168.122.1/24")
+print_result(scan_result)
 
 
