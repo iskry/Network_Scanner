@@ -10,7 +10,7 @@ def getArguments():
     parser = optparse.OptionParser()
 
     # Adding option to get target IP address from the user
-    parser.add_option("-t", "--target", dest="ip", help="target IP address")
+    parser.add_option("-t", "--target", dest="ip", help="target IP address / IP range")
 
     # Parsing the command line arguments and options
     (options, arguments) = parser.parse_args()
